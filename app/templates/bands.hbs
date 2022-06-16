@@ -16,6 +16,36 @@
       </li>
     {{/each}}
   </ul>
+  <div class='rr-new-label'>
+    {{#if this.isAddingBand}}
+      <form class='rr-inline-form' {{on 'submit' this.saveBand}}>
+        <input
+          type='text'
+          class='rr-input'
+          value={{this.newBandName}}
+          {{!-- {{on 'change' this.updateBandName}} --}}
+          {{on 'input' this.updateBandName}}
+          placeholder='New band'
+        />
+        <button
+          type='submit'
+          class='rr-action-button'
+          {{!-- disabled={{this.isAddButtonDisabled}} --}}
+        >
+        Add
+        </button>
+        <button
+          class='rr-cancel-icon'
+          onclick={{action 'cancelAddBand'}}
+        >Cancel</button>
+      </form>
+    {{else}}
+      <label {{on 'click' this.addBand}}>
+        +
+        <span class='ml1'>Add new band</span>
+      </label>
+    {{/if}}
+  </div>
 </div>
 <div class='rr-main-panel'>
   {{outlet}}
