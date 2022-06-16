@@ -7,8 +7,7 @@ let Song = EmberObject.extend({
   band: '',
   rating: 0,
 });
-
-export default Route.extend({
+export default class SongsRoute extends Route {
   model() {
     let blackDog = Song.create({
       title: 'Black Dog',
@@ -26,5 +25,5 @@ export default Route.extend({
       rating: 2,
     });
     return A([blackDog, yellowLedbetter, pretender]);
-  },
-});
+  }
+}
