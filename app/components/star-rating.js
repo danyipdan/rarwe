@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 export default class StarRatingComponent extends Component {
   @tracked rating = this.args.rating;
-  @tracked maxRating = 5;
+  maxRating = 5;
 
   get stars() {
     const starsArray = [];
@@ -16,8 +16,7 @@ export default class StarRatingComponent extends Component {
   }
 
   @action setRating(newRating) {
-    console.log({ newRating });
-    this.args.item.set('rating', newRating);
     this.rating = newRating;
+    this.args.updateRating({ item: this.args.item, rating: newRating });
   }
 }

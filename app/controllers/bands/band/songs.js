@@ -28,4 +28,9 @@ export default class SongsController extends Controller {
   @action cancelAddSong() {
     this.set('isAddingSong', false);
   }
+
+  @action updateRating(params){
+    const {item: song, rating} = params
+    song.set('rating', rating)
+  }
 }
