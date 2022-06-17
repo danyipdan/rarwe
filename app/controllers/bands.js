@@ -2,11 +2,11 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import Band from '../models/band';
 import { empty } from '@ember/object/computed';
-// import { tracked } from '@glimmer/tracking';
-
+import { service } from "@ember/service";
 export default class BandsController extends Controller {
+  @service router;
+
   isAddingBand = false;
-  // @tracked newBandName = '';
   newBandName = '';
 
   @empty('newBandName') isAddButtonDisabled
@@ -24,7 +24,11 @@ export default class BandsController extends Controller {
     console.log('saveBand()', this.newBandName);
     let newBand = Band.create({ name: this.newBandName });
     this.model.pushObject(newBand);
-    this.set('newBandName', '');
+    this.setProperties({
+      newBandName: '',
+      isAddingBand: false,
+    });
+    this.router.transitionTo('bands.band.songs', newBand)  
   }
 
   @action cancelAddBand() {
