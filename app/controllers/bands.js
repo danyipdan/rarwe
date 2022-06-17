@@ -9,7 +9,7 @@ export default class BandsController extends Controller {
   // @tracked newBandName = '';
   newBandName = '';
 
-  isAddButtonDisabled = empty('newBandName');
+  @empty('newBandName') isAddButtonDisabled
 
   @action updateBandName(e){
     console.log(this.newBandName);
@@ -21,7 +21,6 @@ export default class BandsController extends Controller {
 
   @action saveBand(e) {
     e.preventDefault()
-    console.log(this.isAddButtonDisabled);
     console.log('saveBand()', this.newBandName);
     let newBand = Band.create({ name: this.newBandName });
     this.model.pushObject(newBand);
