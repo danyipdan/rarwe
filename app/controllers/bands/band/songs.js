@@ -7,18 +7,18 @@ export default class SongsController extends Controller {
   isAddingSong = false;
   newSongTitle = '';
 
-  @empty('newSongTitle') isAddButtonDisabled
+  @empty('newSongTitle') isAddButtonDisabled;
 
-  @action updateSongTitle(e){
+  @action updateSongTitle(e) {
     console.log(this.newSongTitle);
-    this.set('newSongTitle', e.target.value)
+    this.set('newSongTitle', e.target.value);
   }
   @action addSong() {
     this.set('isAddingSong', true);
   }
 
   @action saveSong(e) {
-    e.preventDefault()
+    e.preventDefault();
     console.log('saveSong()', this.newSongTitle);
     let newSong = Song.create({ title: this.newSongTitle });
     this.model.songs.pushObject(newSong);
@@ -28,5 +28,4 @@ export default class SongsController extends Controller {
   @action cancelAddSong() {
     this.set('isAddingSong', false);
   }
-
 }
