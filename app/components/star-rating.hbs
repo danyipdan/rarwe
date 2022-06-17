@@ -1,1 +1,12 @@
-{{yield}}
+<div class="rating-panel" ...attributes>
+{{#each this.stars as |star|}}
+  {{log star.rating}}
+  <span class="rating-star" {{on 'click' (fn this.setRating star.rating)}}>
+    {{#if star.isFull}}
+      X
+    {{else}}
+      O
+    {{/if}}
+  </span>
+{{/each}}
+</div>
