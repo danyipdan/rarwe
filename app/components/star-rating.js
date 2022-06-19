@@ -1,22 +1,20 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class StarRatingComponent extends Component {
-  @tracked rating
-  maxRating = 5;
 
   get stars() {
+    const {rating} = this.args
+    const maxRating = 5;
     const starsArray = [];
 
-    for (let i = 1; i <= this.maxRating; i++) {
-      starsArray.push({ rating: i, isFull: this.rating >= i });
+    for (let i = 1; i <= maxRating; i++) {
+      starsArray.push({ rating: i, isFull: rating >= i });
     }
     return starsArray;
   }
 
   @action setRating(newRating) {
-    this.rating = newRating;
     this.args.updateStar(this.args.item, newRating );
   }
 }
