@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class StarRatingComponent extends Component {
-  @tracked rating = this.args.rating;
+  @tracked rating
   maxRating = 5;
 
   get stars() {
@@ -17,6 +17,6 @@ export default class StarRatingComponent extends Component {
 
   @action setRating(newRating) {
     this.rating = newRating;
-    this.args.updateRating({ item: this.args.item, rating: newRating });
+    this.args.updateStar(this.args.item, newRating );
   }
 }

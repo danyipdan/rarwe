@@ -3,7 +3,12 @@
     <li class='rr-list-item'>
       {{song.title}}
       {{song.rating}}
-      <StarRating class='fr' @rating={{song.rating}} @item={{song}} @updateRating={{this.updateRating}} />
+      <StarRating 
+        class='fr' 
+        @rating={{song.rating}} 
+        @item={{song}} 
+        @updateStar={{this.updateStar}} 
+        />
     </li>
   {{else}}
     <li class='tc'>

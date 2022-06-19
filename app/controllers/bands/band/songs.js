@@ -29,8 +29,7 @@ export default class SongsController extends Controller {
     this.set('isAddingSong', false);
   }
 
-  @action updateRating(params){
-    const {item: song, rating} = params
-    song.set('rating', rating)
+  @action updateStar(song, newRating){
+    song.set('rating', newRating)
   }
 }
